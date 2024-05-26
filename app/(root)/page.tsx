@@ -1,8 +1,13 @@
 import { HeaderBox } from "@/components/HeaderBox";
+import { RightSidebar } from "@/components/RightSidebar";
 import { TotalBalanceBox } from "@/components/TotalBalanceBox";
 
 export function Home() {
-	const loggedIn = { firstName: "Grzegorz" };
+	const loggedIn = {
+		firstName: "Grzegorz",
+		lastName: "Kopacki",
+		email: "gkopacki11@gmail.com",
+	};
 	return (
 		<section className="home">
 			<div className="home-content">
@@ -20,6 +25,7 @@ export function Home() {
 					/>
 				</header>
 			</div>
+			<RightSidebar user={loggedIn} transactions={[]} banks={[{}, {}]} />
 		</section>
 	);
 }
