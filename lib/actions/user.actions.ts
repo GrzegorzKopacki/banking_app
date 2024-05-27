@@ -6,7 +6,7 @@ export const signIn = async () => {
 		console.error("Error", error);
 	}
 };
-export const signUp = async () => {
+export const signUp = async (userData: SignUpParams) => {
 	try {
 	} catch (error) {
 		console.error("Error", error);
