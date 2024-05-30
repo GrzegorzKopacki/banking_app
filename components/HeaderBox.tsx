@@ -1,3 +1,5 @@
+import { HeaderBoxProps } from "@/types";
+
 export function HeaderBox({
 	type = "title",
 	title,
