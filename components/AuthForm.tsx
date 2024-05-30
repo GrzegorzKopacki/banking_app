@@ -23,17 +23,16 @@ import { authFormSchema } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { getLoggedInUser, signIn, signUp } from "@/lib/actions/user.actions";
-import PlaidLink from "./PlaidLink";
+import { PlaidLink } from "./PlaidLink";
+
 
 const AuthForm = ({ type }: { type: string }) => {
 	const router = useRouter();
 	const [user, setUser] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
-	
 
 	const formSchema = authFormSchema(type);
 
-	// 1. Define your form.
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -42,13 +41,10 @@ const AuthForm = ({ type }: { type: string }) => {
 		},
 	});
 
-	// 2. Define a submit handler.
 	const onSubmit = async (data: z.infer<typeof formSchema>) => {
 		setIsLoading(true);
 
 		try {
-			// Sign up with Appwrite & create plaid token
-
 			if (type === "sign-up") {
 				const userData = {
 					firstName: data.firstName!,
