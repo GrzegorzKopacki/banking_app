@@ -24,7 +24,7 @@ export async function Home({ searchParams: { id, page } }: SearchParamProps) {
 					<HeaderBox
 						type="greeting"
 						title="Welcome"
-						user={loggedIn?.name || "Guest"}
+						user={loggedIn?.firstName || "Guest"}
 						subtext="Access and manage your account and transactions efficiently. "
 					/>
 					<TotalBalanceBox
