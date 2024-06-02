@@ -38,8 +38,8 @@ export const signIn = async ({ email, password }: signInProps) => {
 		console.error("Error", error);
 	}
 };
-export const signUp = async (userData: SignUpParams) => {
-	const { email, password, firstName, lastName } = userData;
+export const signUp = async ({ password, ...userData }: SignUpParams) => {
+	const { email, firstName, lastName } = userData;
 
 	let newUserAccount;
 
@@ -75,6 +75,7 @@ export const signUp = async (userData: SignUpParams) => {
 				dwollaCustomerUrl,
 			}
 		);
+
 		const session = await account.createEmailPasswordSession(email, password);
 
 		cookies().set("appwrite-session", session.secret, {
@@ -83,6 +84,7 @@ export const signUp = async (userData: SignUpParams) => {
 			sameSite: "strict",
 			secure: true,
 		});
+
 		return parseStringify(newUser);
 	} catch (error) {
 		console.error("Error", error);
