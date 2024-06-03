@@ -6,11 +6,12 @@ import { getAccount, getAccounts } from "@/lib/actions/bank.actions";
 import { getLoggedInUser } from "@/lib/actions/user.actions";
 import { SearchParamProps } from "@/types";
 
-export async function Home({ searchParams: { id, page } }: SearchParamProps) {
+const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
 	const currentPage = Number(page as string) || 1;
 	const loggedIn = await getLoggedInUser();
-
-	const accounts = await getAccounts({ userId: loggedIn.$id });
+	const accounts = await getAccounts({
+		userId: loggedIn.$id,
+	});
 
 	if (!accounts) return;
 
@@ -27,14 +28,16 @@ export async function Home({ searchParams: { id, page } }: SearchParamProps) {
 						type="greeting"
 						title="Welcome"
 						user={loggedIn?.firstName || "Guest"}
-						subtext="Access and manage your account and transactions efficiently. "
+						subtext="Access and manage your account and transactions efficiently."
 					/>
+
 					<TotalBalanceBox
 						accounts={accountsData}
 						totalBanks={accounts?.totalBanks}
 						totalCurrentBalance={accounts?.totalCurrentBalance}
 					/>
 				</header>
+
 				<RecentTransactions
 					accounts={accountsData}
 					transactions={account?.transactions}
@@ -42,6 +45,7 @@ export async function Home({ searchParams: { id, page } }: SearchParamProps) {
 					page={currentPage}
 				/>
 			</div>
+
 			<RightSidebar
 				user={loggedIn}
 				transactions={account?.transactions}
@@ -49,6 +53,6 @@ export async function Home({ searchParams: { id, page } }: SearchParamProps) {
 			/>
 		</section>
 	);
-}
+};
 
 export default Home;
