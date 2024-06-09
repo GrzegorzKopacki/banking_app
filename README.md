@@ -30,11 +30,15 @@ Built with Next.js, Horizon is a financial SaaS platform that connects to multip
 ## Usage
 
 - **Creating an account**: To log in to the application, you need to fill out the registration form: the data does not have to be real but must meet the form requirements.
+- 
 - **Connect a bank account**: you need to add a bank account using Plaid: choose any bank and go through the process of adding the account to the application.
+- 
 - **Login and password**: Username and password for adding a bank account using Plaid:
-  login:user_good
-  password:pass_good
-- **Deleting a Question**: Click on "Usuń pytanie" to remove an existing question from the quiz.
+  
+  login:  user_good
+  
+  password:  pass_good
+  
 
 ## Used Technologies
 
